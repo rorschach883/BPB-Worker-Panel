@@ -19,5 +19,5 @@ jobs:
           upstream_sync_repo: bia-pain-bache/BPB-Worker-Panel
           upstream_sync_branch: main
           target_sync_branch: main
-          # 开启强推功能，保证永远和原作者百分百同步
-          git_push_force: true
+          # 这是新版插件的“强推覆盖”写法，告诉它用 --force 参数强行推送
+          target_branch_push_args: '--force'
