@@ -6,7 +6,7 @@
 
 ## تعریف‌ها
 
-چند اصطلاح رایج توی همه پیاده‌سازی‌های نویز Warp استفاده می‌شن. بیشتر هسته‌ها، از جمله **Xray**، **Hiddify**، **Xray Knocker** و **Amnezia**، حداقل دو تا از این پارامترا رو دارن:
+چند اصطلاح رایج توی همه پیاده‌سازی‌های نویز Warp استفاده می‌شن. بیشتر هسته‌ها، از جمله **Xray**، **Xray Knocker** و **Amnezia**، حداقل دو تا از این پارامترا رو دارن:
 
 ### Mode
 
@@ -24,13 +24,7 @@
 
 بازه زمانی بین فرستادن بسته‌های نویز.
 
-## MahsaNG و Hiddify
-
-### Hiddify Mode
-
-* حالت‌های `m1` تا `m6`
-* حالت `h_HEX`، که HEX یه مقدار بین `00` و `FF` هست (مثل `h_0a`، `h_f9`، `h_9c`)
-* حالت `g_HEX_HEX_HEX`، که HEX همون فرمت رو داره (مثل `g_0a_ff_9c`)
+## MahsaNG
 
 ### MahsaNG Mode
 
@@ -79,6 +73,9 @@ salamchetori123
 ```
 
 !!! tip "نکته"
+    - برای تبدیل متن به Base64 میتونید از [این ابزار](https://onlinebase64tools.com/base64-encode) استفاده کنید.
+    - برای تولید رشته Hex میتونید از [این ابزار](https://onlinetools.com/random/generate-random-hexadecimal-numbers) استفاده کنید.
 
-    * برای تبدیل متن به Base64 میتونید از [این ابزار](https://onlinebase64tools.com/base64-encode) استفاده کنید.
-    * برای تولید رشته Hex میتونید از [این ابزار](https://onlinetools.com/random/generate-random-hexadecimal-numbers) استفاده کنید.
+### Applies To
+
+مشخص میکنه نویزی که تعریف کردید به کدوم نوع از IP اضافه بشه، بصورت پیشفرض روی IP هست که هم به IPv4 و هم به v6 اضافه میشه.

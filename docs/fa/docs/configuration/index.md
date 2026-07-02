@@ -8,6 +8,14 @@
 
 <div class="grid cards" markdown> 
 
+- :material-cog-outline:{ .lg .middle } __تنظیمات مشترک یا Common__
+
+    ---
+
+    شامل تنظیمات عمومی که برای همه پروتکل‌ها و لینکای اشتراک، مشترک هستن.
+
+    [:octicons-arrow-right-24: شروع](common.md)
+
 - :material-cog-outline:{ .lg .middle } __پروتکل‌های VLESS و Trojan__
 
     ---
@@ -23,6 +31,14 @@
     تنظیمات Fragment رو برای رفع اختلالات اپراتور یا رفع فیلتر دامنه پیکربندی کنید.
 
     [:octicons-arrow-right-24: شروع](fragment.md)
+
+- :material-cog-outline:{ .lg .middle } __اضافه کردن کانفیگ‌های شخصی__
+
+    ---
+
+    اضافه کردن لینک اشتراک و کانفیگ‌های شخصی جهت اضافه شدن به لسنک اشتراک Raw.
+
+    [:octicons-arrow-right-24: شروع](external-configs.md)
 
 - :material-cog-outline:{ .lg .middle } __تنظیمات عمومی Warp__
 

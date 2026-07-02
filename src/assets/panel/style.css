@@ -7,7 +7,6 @@
     --form-background-color: #f9f9f9;
     --table-active-color: #f2f2f2;
     --hr-text-color: #3b3b3b;
-    --lable-text-color: #333;
     --border-color: #ddd;
     --button-color: #09639f;
     --input-background-color: white;
@@ -44,7 +43,6 @@ body.dark-mode {
     --form-background-color: #121212;
     --table-active-color: #252525;
     --hr-text-color: #D5D5D5;
-    --lable-text-color: #DFDFDF;
     --border-color: #353535;
     --button-color: #3498DB;
     --input-background-color: #252525;
@@ -75,6 +73,10 @@ h1 {
     gap: var(--container-gap);
 }
 
+.container>.section {
+    margin: 0;
+}
+
 .inner-container {
     display: flex;
     flex-direction: column;
@@ -101,7 +103,7 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: var(--container-gap);
-    margin-bottom: var(--container-gap);
+    margin: var(--container-gap) 0;
 }
 
 .form-control {
@@ -110,7 +112,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 10px;
 }
 
 .form-control div {
@@ -121,10 +123,8 @@ h1 {
 
 .form-control label {
     flex: 1;
-    text-align: center;
+    text-align: left;
     width: 100%;
-    font-weight: bold;
-    color: var(--lable-text-color);
 }
 
 input[type="text"],
@@ -138,13 +138,15 @@ select {
     line-height: 1.5;
     border: 1px solid var(--border-color);
     border-radius: var(--element-border-radius);
-    color: var(--lable-text-color);
+    color: var(--color);
     background-color: var(--input-background-color);
     transition: border-color 0.3s ease;
 }
 
 textarea {
     font-family: inherit;
+    scrollbar-color: #ccc transparent;
+    scrollbar-width: thin;
     resize: none;
     color: var(--color);
     max-height: calc(5lh + 10px);
@@ -159,13 +161,21 @@ select:focus {
     outline: none;
 }
 
+input[type="text"]:read-only,
+input[type="number"]:read-only,
+input[type="url"]:read-only,
+textarea:read-only {
+    color: gray;
+    background-color: var(--form-background-color);
+}
+
 .form-control input[type="password"] {
     text-align: center;
     width: 50%;
     padding: 10px;
     border: 1px solid var(--border-color);
     border-radius: var(--element-border-radius);
-    color: var(--lable-text-color);
+    color: var(--color);
     background-color: var(--input-background-color);
     transition: border-color 0.3s ease;
 }
@@ -306,6 +316,10 @@ button.panel-settings {
         'opsz' 24
 }
 
+a .material-symbols-rounded {
+    color: var(--secondary-color);
+}
+
 details:not(:last-of-type) {
     border-bottom: 1px solid var(--border-color);
 }
@@ -333,6 +347,10 @@ h3 {
     color: var(--hr-text-color);
     justify-content: center;
     align-items: center;
+}
+
+h4 {
+    margin: 0;
 }
 
 hr {
@@ -390,8 +408,6 @@ hr {
 
 label {
     display: block;
-    font-weight: 600;
-    color: var(--lable-text-color);
 }
 
 .button {
@@ -425,13 +441,17 @@ table button {
     border: none;
     background-color: unset;
     cursor: pointer;
-    color: var(--lable-text-color);
     padding: 0;
 }
 
 table button span.material-symbols-rounded {
     font-size: 28px;
     margin: 0;
+    color: var(--button-color)
+}
+
+table td div span.material-symbols-rounded {
+    color: #3fb950;
 }
 
 .button {
@@ -501,11 +521,7 @@ table button:active {
     margin: 0;
     border: none;
     cursor: pointer;
-}
-
-.add-noise i,
-.delete-noise i {
-    color: var(--button-color);
+    color: green;
 }
 
 .delete-noise {
@@ -513,6 +529,7 @@ table button:active {
     margin: 0;
     border: none;
     cursor: pointer;
+    color: darkred;
 }
 
 .table-container table {
@@ -536,13 +553,13 @@ table button:active {
 }
 
 .table-container tr td:first-child {
-    color: var(--lable-text-color);
     text-wrap: nowrap;
 }
 
 .table-container tr td:nth-child(2) {
     flex-direction: row;
     gap: 8px;
+    width: fit-content;
 }
 
 .my-ip {
@@ -577,7 +594,7 @@ table button:active {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px;
+    padding: var(--inner-container-padding);
     width: 100%;
     gap: 10px;
     border-bottom: 1px solid var(--border-color);
@@ -586,14 +603,6 @@ table button:active {
 .table-container td div {
     display: flex;
     align-items: center;
-}
-
-.table-container th {
-    background-color: var(--secondary-color);
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
-    width: 50%;
 }
 
 .table-container tr:hover {
@@ -754,16 +763,44 @@ summary h3 {
     align-items: center;
 }
 
-@media only screen and (min-width: 768px) {
-    .form-container {
-        max-width: 60%;
-    }
+.value-container {
+    color: var(--lable-text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
 
+.output-container {
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    background-color: var(--input-background-color);
+    color: var(--lable-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.value-container .material-symbols-rounded {
+    color: var(--button-color);
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
     .form-control {
         flex-direction: row;
     }
+}
 
-    .form-control label {
-        text-align: left;
+@media only screen and (min-width: 768px) {
+    .form-container {
+        max-width: calc(768px * 0.9);
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .form-container {
+        max-width: 768px;
     }
 }

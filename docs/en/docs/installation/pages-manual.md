@@ -1,10 +1,12 @@
-# :material-new-box:{ .md .middle } Pages Setup - Direct Upload Method
+# :material-new-box:{ .md .middle } Pages manual installation (Direct Upload)
+
+It is highly recommended to use [Wizard installation](./wizard.md) to avoid Cloudflare 1101 error, user errors and also save time to setup panel.
 
 ## Steps
 
 ### 1. Create Cloudflare Account
 
-If you don’t have a Cloudflare account, create one [here](https://dash.cloudflare.com/sign-up). You only need an email for registration. Due to Cloudflare’s restrictions, use a reputable email provider like Gmail.
+If you don’t have a Cloudflare account, create one [from here](https://dash.cloudflare.com/sign-up). You only need an email for registration. Due to Cloudflare’s restrictions, use a reputable email provider like Gmail.
 
 ### 2. Create Pages Project
 
@@ -44,13 +46,13 @@ Return to the `Workers & Pages` section and open your Pages project. Go to the `
 
 In the `Bindings` section, click `Add` and select `KV Namespace`. Set the `Variable name` to `kv` (exactly as shown) and select the KV created earlier for `KV namespace`. Click `Save`.
 
-![Pages Application](../images/bind-kv.jpg)
+![Pages Application](../images/pages-bind-kv.jpg)
 
 The KV setup is now complete.
 
-### 4. Set UUID and Trojan password
+### 4. Set UUID, Trojan password and Subscription path
 
-In the same `Settings` section, locate the `Variables and Secrets` section. Click `Add`. Enter `UUID` (in capital letters) in the first box and copy the UUID from the link provided earlier into the `Value` field. Click `Add variable`. Then, enter `TR_PASS` (in capital letters) in the first box, copy the Trojan Password from the link into the `Value` field, and click `Save`.
+Click `Copy all` from the `Secrets generator` page provided earlier, In Cloudflare dashboard go to `Settings` section, locate the `Variables and Secrets` section. Click `Add` and paste into the `Variable name` field and click `Save`. This will automatically add these 3 parameters to panel.
 
 Click `Create deployment` at the top of the page and upload the same zip file again, as done previously.
 
@@ -71,18 +73,36 @@ In the project’s `Settings` section, open `Variables and Secrets`:
 
 ![Pages Application](../images/pages-env-vars.jpg)
 
-Click `Add` and enter `PROXY_IP` (in capital letters) in the first box. Obtain IPs from the following link, which lists IPs from various regions and ISPs:
-
-```text
-https://www.nslookup.io/domains/bpb.yousef.isegaro.com/dns-records/
-```
+Click `Add` and enter `PROXY_IP` (in capital letters) in the first box.
+You can check available Proxy IPs by clicking the icon beside `Proxy IPs / Domains` field in the panel or visiting `/proxy-ip` in browser, which lists IPs by region and ISP.
 
 ![Pages Application](../images/proxy-ips.jpg)
 
 !!! info
-    To use multiple Proxy IPs, enter them comma-separated.
+    To use multiple Proxy IPs, fill them comma-separated.
     ```title="Example"
     151.213.181.145, 5.163.51.41, bpb.yousef.isegaro.com
+    ```
+
+Enter the IPs in the `Value` field and click `Save`. Click `Create deployment` at the top of the page and upload the zip file again. The changes will take effect.
+
+### Fixing the NAT64 Prefixes
+
+By default, the code uses multiple NAT64 prefixes randomly, assigning a new random prefix for each connection to Cloudflare addresses (covering much of the web). This IP rotation may cause issues, particularly for traders. From version 3.4.2 onward, you can change the prefixes via the panel and update the subscription. However, the method below is recommended:
+
+!!! note
+    Changing the NAT64 prefixes via the panel requires updating the subscription if the IP stops working, which can disrupt donated configurations, as users without an active subscription cannot update them. Use this method only for personal use. Other methods don’t require subscription updates.
+
+In the project’s `Settings` section, open `Variables and Secrets`, click `Add` and enter `NAT64_PREFIX` (in capital letters) in the first box. Obtain IPs from the following link, which lists IPs from various regions and ISPs:
+
+```text
+https://github.com/bia-pain-bache/BPB-Worker-Panel/blob/main/NAT64Prefixes.md
+```
+
+!!! info
+    To use multiple IPs, fill them comma-separated.
+    ```title="Example"
+    [2602:fc59:b0:64::], [2602:fc59:11:64::]
     ```
 
 Enter the IPs in the `Value` field and click `Save`. Click `Create deployment` at the top of the page and upload the zip file again. The changes will take effect.

@@ -8,6 +8,14 @@
 
 <div class="grid cards" markdown>
 
+- :material-cog-outline:{ .lg .middle } __Common__
+
+    ---
+
+    Configure shared settings across all protocols and subscriptions.
+
+    [:octicons-arrow-right-24: Getting started](common.md)
+
 - :material-cog-outline:{ .lg .middle } __VLESS - Trojan__
 
     ---
@@ -23,6 +31,14 @@
     Configure Fragment settings to mitigate ISP or regional disruptions.
 
     [:octicons-arrow-right-24: Getting started](fragment.md)
+
+- :material-cog-outline:{ .lg .middle } __External Raw Configs__
+
+    ---
+
+    Add personal subscriptions and configs to Raw subscription.
+
+    [:octicons-arrow-right-24: Getting started](external-configs.md)
 
 - :material-cog-outline:{ .lg .middle } __Warp__
 
